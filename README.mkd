@@ -50,3 +50,5 @@ With Go:
 ▶ go get -u github.com/tomnomnom/qsreplace
 ```
 
+Or [download a release](https://github.com/tomnomnom/qsreplace/releases) and put it somewhere in your `$PATH`
+(e.g. in /usr/local/bin).
