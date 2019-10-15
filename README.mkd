@@ -1,6 +1,7 @@
 # qsreplace
 
-Accept URLs on stdin, replace all query string values with a user-supplied value.
+Accept URLs on stdin, replace all query string values with a user-supplied value, only output
+each combination of query string parameters once per host and path.
 
 ## Usage
 
@@ -31,9 +32,9 @@ https://example.com/pathtwo?one=1newval&two=2newval
 https://example.net/a/path?one=1newval&two=2newval
 ```
 
-### Remove Duplicate URL + Parameter Combinations
+### Remove Duplicate URL and Parameter Combinations
 
-You can omit the argument to `-a` to only output each combination of URL and query string keys once:
+You can omit the argument to `-a` to only output each combination of URL and query string parameters once:
 ```
 ▶ cat urls.txt | qsreplace -a 
 https://example.com/path?one=1&two=2
