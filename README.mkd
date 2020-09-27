@@ -32,6 +32,18 @@ https://example.com/pathtwo?one=1newval&two=2newval
 https://example.net/a/path?one=1newval&two=2newval
 ```
 
+### Modify Query String Values one at a time
+
+```
+▶ cat urls.txt | qsreplace -u newval
+https://example.com/path?one=newval&two=2
+https://example.com/path?one=1&two=newval
+https://example.com/pathtwo?one=1&two=newval
+https://example.com/pathtwo?one=newval&two=2
+https://example.net/a/path?one=1&two=newval
+https://example.net/a/path?one=newval&two=2
+```
+
 ### Remove Duplicate URL and Parameter Combinations
 
 You can omit the argument to `-a` to only output each combination of URL and query string parameters once:
