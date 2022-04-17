@@ -11,6 +11,9 @@ import (
 )
 
 func main() {
+	var nEncode int
+	flag.IntVar(&nEncode, "e", 1, "Number Url Encode for Bypass WAF")
+	
 	var appendMode bool
 	flag.BoolVar(&appendMode, "a", false, "Append the value instead of replacing it")
 	flag.Parse()
@@ -53,8 +56,18 @@ func main() {
 			}
 		}
 
-		u.RawQuery = qs.Encode()
+		// Param for encode Payload - Bypass WAF
+		
+		if nEncode > 0 {
+			u.RawQuery = qs.Encode()
 
+			for i := 0; i < nEncode; i++ {
+				u.RawQuery += qs.Encode()
+			}
+		} else {
+			u.RawQuery = qs.Encode()
+		}
+		
 		fmt.Printf("%s\n", u)
 
 	}
