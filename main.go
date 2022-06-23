@@ -13,6 +13,9 @@ import (
 func main() {
 	var appendMode bool
 	flag.BoolVar(&appendMode, "a", false, "Append the value instead of replacing it")
+
+	var ignorePath bool
+	flag.BoolVar(&ignorePath, "ignore-path", false, "Ignore the path when considering what constitutes a duplicate")
 	flag.Parse()
 
 	seen := make(map[string]bool)
@@ -37,6 +40,9 @@ func main() {
 		sort.Strings(pp)
 
 		key := fmt.Sprintf("%s%s?%s", u.Hostname(), u.EscapedPath(), strings.Join(pp, "&"))
+		if ignorePath {
+			key = fmt.Sprintf("%s?%s", u.Hostname(), strings.Join(pp, "&"))
+		}
 
 		// Only output each host + path + params combination once
 		if _, exists := seen[key]; exists {
