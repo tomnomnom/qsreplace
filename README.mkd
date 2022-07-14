@@ -47,7 +47,7 @@ https://example.net/a/path?one=1&two=2
 With Go:
 
 ```
-▶ go install github.com/tomnomnom/qsreplace@latest
+go install github.com/tomnomnom/qsreplace@latest
 ```
 
 Or [download a release](https://github.com/tomnomnom/qsreplace/releases) and put it somewhere in your `$PATH`
